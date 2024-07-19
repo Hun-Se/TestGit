@@ -1,17 +1,15 @@
+import java.util.Date;
 
-public class Emp {
-
-	String lastName;
-	String hireDate;
-	double salary;
-	String departmentName;
+public class Emp extends Department {
 	
-	
-	@Override
-	public String toString() {
-		return "직원정보 [이름: " + lastName + ", 입사일: " + hireDate + ", 연봉: " + salary + ", 부서명: "
-				+ departmentName + "]";
-	}
-	
-	
+   String name;
+   Date hireDate;
+   double salary;
+   String email;
+   String phoneNumber;
+   String jobId;
+   double commission ;
+   int managerId;
+   int employeeId;
+   
 }
