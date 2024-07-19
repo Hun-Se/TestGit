@@ -2,36 +2,52 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EmpDAO {
 	
-	public static List<Emp> getEmpInfoByManagerName(String managerName) throws Exception {
+	public static List<EmpByManagerName> getEmpInfoByManagerName(String managerName) throws Exception {
 		
-		Connection con = DBUtil.getConnection();
-		if(managerName.length() == 0) throw new Exception("길이가 짧아요");	
-		List<Emp> result = new ArrayList<>();
-		String sql = "select c.last_name, c.hire_date, d.department_name, (c.salary*(1 + ifnull(c.commission_pct,0))*12) salary from employees c join departments d on c.department_id = d.department_id where employee_id in (select e.employee_id from employees e join employees m on e.manager_id = m.employee_id \r\n"
-				+ "where e.manager_id in (select employee_id from employees where last_name = ? ))"  ;
+		if(managerName.length() == 0) throw new Exception("Enter를 누르셨습니다");
+		Connection con = DBUtil.getConnection();	
+		String sql = "select count(*) from employees where last_name = ? or first_name = ?"  ;
+		PreparedStatement psmt = con.prepareStatement(sql);
+		psmt.setString(1, managerName);
+		psmt.setString(2, managerName);
+		ResultSet rss = psmt.executeQuery();
+		rss.next();	
+		if(rss.getInt("count(*)") == 0) throw new Exception("없는 이름입니다");
+		List<EmpByManagerName> result = new ArrayList<>();
+		sql = "select e.last_name, d.department_name, (e.salary*(1 + ifnull(e.commission_pct,0))*12) salary, e.hire_date \r\n"
+				+ "from employees e join employees m on e.manager_id = m.employee_id join departments d on e.department_id = d.department_id \r\n"
+				+ "where e.manager_id in (select employee_id from employees c where last_name = ?" + " or first_name = ? ) "  ;
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, managerName);
+		pstmt.setString(2, managerName);
 		ResultSet rs = pstmt.executeQuery(); 
-
-		while(rs.next()){
-			int salary = rs.getInt("salary");
-			String lastName = rs.getString("last_name");
-			String hireDate = rs.getString("hire_date");
-			String departmentName = rs.getString("department_name");
-			Emp emp = new Emp();
-			emp.lastName = lastName;
-			emp.salary = salary;
-			emp.hireDate = hireDate;
-			emp.departmentName = departmentName;
+		
+		
+			while(rs.next()){
+				int salary = rs.getInt("salary");
+				String lastName = rs.getString("last_name");
+				Date hireDate = rs.getDate("hire_date");
+				String departmentName = rs.getString("department_name");
+				EmpByManagerName emp = new EmpByManagerName();
+				emp.name = lastName;
+				emp.salary = salary;
+				emp.hireDate = hireDate;
+				emp.departmentName = departmentName;
+				
+				result.add(emp);
+				
+			}
+		
+		return result ;
+		
 			
-			result.add(emp);	
-		}
-			return result ;
 		
 	}
 	
