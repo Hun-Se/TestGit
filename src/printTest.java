@@ -12,7 +12,7 @@ public class printTest {
 	//이름 검색 기능
 	public static List<Emp> getEmpListByName (String name) throws Exception{
 		List<Emp> result = new ArrayList<Emp>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(name);
 		pstmt.setString(1, name); //들어온 파라미터를 넣는다.
 		pstmt.setString(2, name);
@@ -51,7 +51,7 @@ public class printTest {
 	//입사년도 검색 기능 : 입사인원 수, 평균 연봉
 	public static List<EmpStatistics> getInfoByHireYear(int year) throws Exception {
 		List<EmpStatistics> result = new ArrayList<EmpStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(year));
 		pstmt.setInt(1,year);
 		Statement stmt = con.createStatement();
@@ -77,7 +77,7 @@ public class printTest {
 	//입사년도 검색 기능 : 그 해 최대 연봉자 이름, 연봉
 	public static List<HireDate> getMaxSalaryByYear(int year) throws Exception {
 		List<HireDate> result = new ArrayList<HireDate>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(year));
 		pstmt.setInt(1,year);
 		Statement stmt = con.createStatement();
@@ -103,7 +103,7 @@ public class printTest {
 	//입사년도 검색 기능 : 그 해 최소 연봉자 이름, 연봉
 	public static List<HireDate> getMinSalaryByYear(int year) throws Exception {
 		List<HireDate> result = new ArrayList<HireDate>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(year));
 		pstmt.setInt(1,year);
 		Statement stmt = con.createStatement();
@@ -130,7 +130,7 @@ public class printTest {
 	// 입사년도 검색 : 그 해 가장 먼저 입사한 사람 
 	public static List<Emp> getEmpByYear(int year) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(year));
 		pstmt.setInt(1,year);
 		Statement stmt = con.createStatement();
@@ -165,7 +165,7 @@ public class printTest {
 	public static List<Department> getDptListByDptId(int dptId) throws Exception {
 
 		List<Department>result = new ArrayList<Department>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
@@ -196,7 +196,7 @@ public class printTest {
 	//부서번호 : 부서 수
 	public static List<DepartmentStatistics> getDptCountByDptId(int dptId) throws Exception {
 		List<DepartmentStatistics>result = new ArrayList<DepartmentStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
@@ -219,7 +219,7 @@ public class printTest {
 	//부서번호 : 부서 최고 연봉자
 	public static List<DepartmentStatistics> getDptMaxSalaryByDptId(int dptId) throws Exception {
 		List<DepartmentStatistics>result = new ArrayList<DepartmentStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
@@ -245,7 +245,7 @@ public class printTest {
 	//부서번호 : 부서 최소 연봉자
 	public static List<DepartmentStatistics> getDptMinSalaryByDptId(int dptId) throws Exception {
 		List<DepartmentStatistics>result = new ArrayList<DepartmentStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
@@ -271,7 +271,7 @@ public class printTest {
 	//부서번호 : 부서평균 연봉
 	public static List<DepartmentStatistics> getDptAvgSalaryByDptId(int dptId) throws Exception {
 		List<DepartmentStatistics>result = new ArrayList<DepartmentStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
@@ -295,7 +295,7 @@ public class printTest {
 	//부서번호 : 부서 가장 먼저 입사자
 	public static List<DepartmentStatistics> getDptFirstEmpByDptId(int dptId) throws Exception {
 		List<DepartmentStatistics>result = new ArrayList<DepartmentStatistics>();
-		Connection con = DBUtill.getConnection();
+		Connection con = DBUtil.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(String.valueOf(dptId));
 		pstmt.setInt(1,dptId);
 		Statement stmt = con.createStatement();
