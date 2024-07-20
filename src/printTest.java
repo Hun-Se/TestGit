@@ -16,13 +16,13 @@ public class printTest {
 		PreparedStatement pstmt = con.prepareStatement(name);
 		pstmt.setString(1, name); //들어온 파라미터를 넣는다.
 		pstmt.setString(2, name);
-		Statement stmt = con.createStatement();
+		//Statement stmt = con.createStatement();
 		String sql = "select hire_date, salary, manager_id, department_id, city, department_name from employees e "
 				+ "join departments d on e.department_id = d.department_id "
 				+ "join locations l on  l.location_id = d.location_id  "
 				+ "where first_name = ? or last_name = ? ";
 
-		ResultSet rs = stmt.executeQuery(sql); // stmt인터페이스에 선언된 메서드이자 리턴타입은 resultset
+		ResultSet rs = pstmt.executeQuery(sql); // stmt인터페이스에 선언된 메서드이자 리턴타입은 resultset
 		
 		while (rs.next()) { //가져올 데이터
 			Date hireDate = rs.getDate("hire_date"); 

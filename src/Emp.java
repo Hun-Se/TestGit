@@ -12,4 +12,6 @@ public class Emp extends Department {
    int managerId;
    int employeeId;
    
+   
+   
 }

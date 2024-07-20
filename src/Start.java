@@ -15,15 +15,13 @@ public class Start {
 					System.out.println("*원하시는 검색어 번호를 선택해주세요* \n1.사용자의 이름 2.입사년도 3.부서번호 4.도시 이름 5.부서장의 부서원 정보 6.끝");
 					searchNumber = scan.nextLine();
 					if (searchNumber.equals("1")) {
-						System.out.println("사용자의 이름을 입력해주세요 :");
-						String lastName = scan.nextLine(); 
-					
+						
+						StaticsPrinter.printEmpListByName();
 						
 					}else if (searchNumber.equals("2")) {
-						System.out.println("입사년도를 입력해주세요 :" );
-						int hireDate = scan.nextInt(); 
-					
-					
+						
+						StaticsPrinter.printInfoByHireYear();
+						
 					}else if (searchNumber.equals("3")) {
 						System.out.println("부서번호를 입력해주세요 :");
 						int deptId = scan.nextInt(); 
@@ -39,7 +37,7 @@ public class Start {
 
 					}else if (searchNumber.equals("5")) {
 					
-						StaticsPrinter.printEmpInfoByManager();
+						StaticsPrinter.printEmpInfoByManagerName();
 					
 					}else if(searchNumber.equals("6")) {
 						break;
