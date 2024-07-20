@@ -93,8 +93,8 @@ public class DepartmentDAO {
 				
 				
 			DepartmentStatistics dptStatis = new DepartmentStatistics();
-			dpt.name = name;
-			dpt.minSalary = minSalary;
+			dptStatis.name = name;
+			dptStatis.minSalary = minSalary;
 			
 			return dptStatis;
 			
@@ -136,11 +136,11 @@ public class DepartmentDAO {
 			rs1.next();
 			String name = rs1.getString("name");
 			
-			DepartmentStatistics dpt = new DepartmentStatistics();
-			dpt.name = name;
+			DepartmentStatistics dptStatis = new DepartmentStatistics();
+			dptStatis.name = name;
 			
-				result.add(dpt);
-			return result;
+				result.add(dptStatis);
+			return dptStatis;
 			
 		}
 }

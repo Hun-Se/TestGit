@@ -305,11 +305,11 @@ public class printTest {
 		ResultSet rs1 = stmt.executeQuery(sql1);
 		
 		while (rs1.next()) {
-			String firstName = rs1.getString("name");
+			String name = rs1.getString("name");
 			
 			
 			DepartmentStatistics dpt = new DepartmentStatistics();
-			dpt.firstName = firstName;
+			dpt.name = name;
 		
 					result.add(dpt);
 		}	

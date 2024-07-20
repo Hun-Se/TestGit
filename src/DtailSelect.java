@@ -1,13 +1,19 @@
 import java.util.Scanner;
 
-public class OutSelect {
+public class DtailSelect {
 	
-	public void cityNamePlus(String cityName) throws Exception {
+	public static void cityNameDetail() throws Exception {
 		while (true) {
+			
 			Scanner scan = new Scanner(System.in);
+			
+			System.out.println("도시 이름(영어)을 입력해주세요");
+			String cityName = scan.nextLine();
 			System.out.println("도시 이름: " + cityName);
-			System.out.println("원하시는 정보의 번호를 입력해주세요 \n"
-					+ "1.도시 개수 2. 도시별 최대연봉 3. 도시별 최소연봉 4.도시별 평균 연봉 5. 도시별 가장 먼저 입사한 사원 6. 도시별 가장 늦게 입사한 사원 7. 처음화면으로 돌아가기");
+			 
+			System.out.println("원하시는 정보의 번호를 입력해주세요");
+			System.out.println("1.도시 개수 2. 도시별 최대연봉 3. 도시별 최소연봉 4.도시별 평균 연봉 5. 도시별 가장 먼저 입사한 사원 6. 도시별 가장 늦게 입사한 사원 7. 처음화면으로 돌아가기");
+			
 			int selectNumber = scan.nextInt();
 			if(selectNumber == 1) {
 				System.out.println("도시 개수를 선택하셨습니다.");
