@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class StaticsPrinter {
 	
+
 	static void printEmpInfoByManagerName(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("부서장 이름: " );
@@ -26,8 +27,8 @@ public class StaticsPrinter {
 			}
 			
 		}
-		System.out.println("처음으로 돌아갑니다.");
-	
+
+		System.out.println("종료되었습니다.");
 	}
 	
 	static void printEmpListByName(){
@@ -104,6 +105,46 @@ public class StaticsPrinter {
 		}
 		System.out.println("처음으로 돌아갑니다.");
 	
+	}
+	
+	static void printCityCount(String cityName) throws Exception {
+		CityStatistics city = CityDAO.getCityListByCity(cityName);
+		System.out.println(city.count);
+		
+	}
+	
+	static void printCityMaxSalary(String cityName) throws Exception {
+		CityStatistics city = CityDAO.getCityListByCity(cityName);
+		
+		System.out.println("최대연봉");
+		System.out.println("도시이름: " + cityName + "최대연봉: " + city.avgSalary );
+		System.out.println(city.maxSalary);
+	}
+	
+	static void printCityMinSalary(String cityName) throws Exception {
+		CityStatistics city = CityDAO.getCityListByCity(cityName);
+		System.out.println("최저연봉");
+		System.out.println("도시이름: " + cityName + "최저연봉: " + city.avgSalary );
+		System.out.println(city.minSalary);
+	}
+	
+	static void printCityAvgSalary(String cityName) throws Exception {
+		CityStatistics city= CityDAO.getCityListByCity(cityName);
+		System.out.println("평균연봉");
+		System.out.println("도시이름: " + cityName + "이름: " + "평균연봉: " + city.avgSalary );
+		System.out.println(city.avgSalary);
+	}
+	
+	static void printCityFirstHireDate(String cityName) throws Exception {
+		CityStatistics city = CityDAO.getCityListByCity(cityName);
+		System.out.println("도시이름: " + cityName + "입사일: " + city.firstHireDate);
+		System.out.println(city.firstHireDate);
+	}
+	
+	static void printCityLastHireDate(String cityName) throws Exception {
+		CityStatistics city = CityDAO.getCityListByCity(cityName);
+		System.out.println("도시이름: " + cityName + "입사일: " + city.firstHireDate);
+		System.out.println(city.lastHireDate);
 	}
 	
 }

@@ -7,8 +7,5 @@ public class DepartmentStatistics extends Department{
 	double maxSalary;
 	double minSalary;
 	double avgSalary;
-	String firstName;
-	
-	
-	
+		
 }
