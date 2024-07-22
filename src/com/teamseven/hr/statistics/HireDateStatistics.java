@@ -1,7 +1,7 @@
-package com.seventeam.hr.domain;
+package com.teamseven.hr.statistics;
 import java.util.Date;
 
-public class HireDate {
+public class HireDateStatistics {
 
 	int count;
 	double maxSalary;

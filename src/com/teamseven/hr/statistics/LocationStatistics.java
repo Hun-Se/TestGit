@@ -1,8 +1,8 @@
 package com.teamseven.hr.statistics;
 
-import com.seventeam.hr.domain.City;
+import com.seventeam.hr.domain.Location;
 
-public class CityStatistics extends City {
+public class LocationStatistics extends Location {
 
 	private int count;
 	private double maxSalary;  
@@ -11,7 +11,11 @@ public class CityStatistics extends City {
 	private String firstHireDate; // 결과값 1987-06-17
 	private String lastHireDate;  // 결과값 1999-12-07
 	
-	public CityStatistics (int count, double  maxSalary, double  minSalary, double  avgSalary, String firstHireDate, String lastHireDate) {
+	public LocationStatistics() {
+		
+	}
+	
+	public LocationStatistics (int count, double  maxSalary, double  minSalary, double  avgSalary, String firstHireDate, String lastHireDate) {
 		this.setCount(count);
 		this.setMaxSalary(maxSalary);
 		this.setMinSalary(minSalary);

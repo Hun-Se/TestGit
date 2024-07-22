@@ -13,7 +13,7 @@ public class DBUtil {
 	}
 
 	public static Connection getConnection() throws Exception {
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr", "root", "0000");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr", "root", "rootroot");
 
 		return con;
 	}
