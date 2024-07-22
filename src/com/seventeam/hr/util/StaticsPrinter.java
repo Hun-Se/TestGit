@@ -10,8 +10,8 @@ import com.seventeam.hr.dao.EmpDAO;
 import com.seventeam.hr.dao.LocationDAO;
 import com.seventeam.hr.domain.Department;
 import com.seventeam.hr.domain.Emp;
-import com.teamseven.hr.statistics.DepartmentStatistics;
-import com.teamseven.hr.statistics.LocationStatistics;
+import com.seventeam.hr.statistics.DepartmentStatistics;
+import com.seventeam.hr.statistics.LocationStatistics;
 
 public class StaticsPrinter {
 	// 사원검색시 정보 출력
@@ -36,12 +36,6 @@ public class StaticsPrinter {
 								.println("---------------------------------------------------------------------------");
 					}
 				}
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				System.out.println("---------------------------------------------------------------------------");
-				System.err.println("JDBC 드라이버 로드 중 오류 발생" + e);
-				System.out.println("---------------------------------------------------------------------------");
-
 			} catch (NumberFormatException e) {// String -> int 형변환 문제
 
 				System.out.println("---------------------------------------------------------------------------");
@@ -84,12 +78,6 @@ public class StaticsPrinter {
 				}
 				int hireYear = Integer.parseInt(hireYearStr);
 				HireYear.getYearStatics(hireYear);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				System.out.println("---------------------------------------------------------------------------");
-				System.err.println("JDBC 드라이버 로드 중 오류 발생" + e);
-				System.out.println("---------------------------------------------------------------------------");
-
 			} catch (NumberFormatException e) {// String -> int 형변환 문제
 
 				System.out.println("---------------------------------------------------------------------------");

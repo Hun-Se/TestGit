@@ -37,12 +37,6 @@ public class DetailSelect {
 					System.out.println("잘못된 번호를 입력하셨습니다. 1~7까지 입력해주세요.");
 				}
 
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-					System.out.println("---------------------------------------------------------------------------");
-					System.err.println("JDBC 드라이버 로드 중 오류 발생" + e);
-					System.out.println("---------------------------------------------------------------------------");
-					
 				} catch (NumberFormatException e) {// String -> int 형변환 문제
 					
 					System.out.println("---------------------------------------------------------------------------");
@@ -114,13 +108,7 @@ public class DetailSelect {
 						System.out.println("잘못된 번호를 입력하셨습니다. 1~7번 중에서 입력해주세요!");
 					}
 				}
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				System.out.println("---------------------------------------------------------------------------");
-    			System.err.println("JDBC 드라이버 로드 중 오류 발생" + e);
-    			System.out.println("---------------------------------------------------------------------------");
-    			
-    		} catch (NumberFormatException e) {// String -> int 형변환 문제
+			} catch (NumberFormatException e) {// String -> int 형변환 문제
 
     			System.out.println("---------------------------------------------------------------------------");
 				System.out.println("숫자형식의 텍스트가 아닙니다.");

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.seventeam.hr.domain.Department;
+import com.seventeam.hr.statistics.DepartmentStatistics;
 import com.seventeam.hr.util.DBUtil;
-import com.teamseven.hr.statistics.DepartmentStatistics;
 
 public class DepartmentDAO {
 	

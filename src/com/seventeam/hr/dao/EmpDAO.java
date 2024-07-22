@@ -11,9 +11,9 @@ import java.util.List;
 
 import com.seventeam.hr.domain.Department;
 import com.seventeam.hr.domain.Emp;
+import com.seventeam.hr.statistics.DepartmentStatistics;
+import com.seventeam.hr.statistics.EmpStatistics;
 import com.seventeam.hr.util.DBUtil;
-import com.teamseven.hr.statistics.DepartmentStatistics;
-import com.teamseven.hr.statistics.EmpStatistics;
 
 public class EmpDAO {
 

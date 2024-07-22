@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.seventeam.hr.dao.EmpDAO;
-import com.teamseven.hr.statistics.EmpStatistics;
+import com.seventeam.hr.statistics.EmpStatistics;
 
 public class HireYear {
 

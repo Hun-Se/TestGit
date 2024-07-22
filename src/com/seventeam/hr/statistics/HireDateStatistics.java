@@ -1,4 +1,4 @@
-package com.teamseven.hr.statistics;
+package com.seventeam.hr.statistics;
 import java.util.Date;
 
 public class HireDateStatistics {
