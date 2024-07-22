@@ -17,48 +17,6 @@ import com.seventeam.hr.util.DBUtil;
 
 public class EmpDAO {
 
-	public static List<Emp> getEmpInfoByManagerName(String managerName) throws Exception {
-
-		if (managerName.length() == 0)
-			throw new Exception("Enter를 누르셨습니다");
-		Connection con = DBUtil.getConnection();
-		String sql = "select count(*) from employees where last_name = ? or first_name = ?";
-		PreparedStatement psmt = con.prepareStatement(sql);
-		psmt.setString(1, managerName);
-		psmt.setString(2, managerName);
-		ResultSet rss = psmt.executeQuery();
-		rss.next();
-		if (rss.getInt("count(*)") == 0)
-			throw new Exception("없는 부서장 이름 입니다");
-		List<Emp> result = new ArrayList<Emp>();
-		sql = "select e.last_name, d.department_name, (e.salary*(1 + ifnull(e.commission_pct,0))*12) salary, e.hire_date \r\n"
-				+ "from employees e join employees m on e.manager_id = m.employee_id join departments d on e.department_id = d.department_id \r\n"
-				+ "where e.manager_id in (select employee_id from employees c where last_name = ?"
-				+ " or first_name = ? ) ";
-		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, managerName);
-		pstmt.setString(2, managerName);
-		ResultSet rs = pstmt.executeQuery();
-
-		while (rs.next()) {
-			double salary = rs.getDouble("salary");
-			String lastName = rs.getString("last_name");
-			Date hireDate = rs.getDate("hire_date");
-			String departmentName = rs.getString("department_name");
-			Emp emp = new Emp();
-			emp.setName(lastName);
-			emp.setSalary(salary);
-			emp.setHireDate(hireDate);
-			emp.setDepartmentName(departmentName);
-
-			result.add(emp);
-
-		}
-
-		return result;
-
-	}
-
 	// 이름 검색 기능 /* emp에 이름도 넣어야 할듯 중복 때문에 */
 	public static List<Emp> getEmpListByName(String name) throws Exception {
 		if (name.length() == 0)
@@ -74,7 +32,7 @@ public class EmpDAO {
 		if (rss.getInt("count(*)") == 0)
 			throw new Exception("없는 이름입니다");
 
-		sql = "select e.hire_date, e.salary, e.manager_id, d.department_id, l.city, d.department_name from employees e "
+		sql = "select concat(e.first_name, e.last_name) name, e.hire_date, e.salary, e.manager_id, d.department_id, l.city, d.department_name from employees e "
 				+ "join departments d on e.department_id = d.department_id "
 				+ "join locations l on  l.location_id = d.location_id  " + "where first_name = ? or last_name = ? ";
 		PreparedStatement pstmt = con.prepareStatement(sql);
@@ -89,6 +47,7 @@ public class EmpDAO {
 			int departmentId = rs.getInt("department_id");
 			String cityName = rs.getString("city");
 			String departmentName = rs.getString("department_name");
+			String empName = rs.getString("name");
 
 			// 도시이름 = 부서아이디랑 조인? 하는 방법 생각해보기 > 다른거 틀 다 만든 다음에
 
@@ -97,6 +56,7 @@ public class EmpDAO {
 			emp.setSalary(salary);
 			emp.setManagerId(managerId);
 			emp.setDepartmentId(departmentId);
+			emp.setName(empName);
 
 			result.add(emp);
 		}
@@ -211,6 +171,48 @@ public class EmpDAO {
 		return result;
 	}
 
+	public static List<Emp> getEmpInfoByManagerName(String managerName) throws Exception {
+
+		if (managerName.length() == 0)
+			throw new Exception("Enter를 누르셨습니다");
+		Connection con = DBUtil.getConnection();
+		String sql = "select count(*) from employees where last_name = ? or first_name = ?";
+		PreparedStatement psmt = con.prepareStatement(sql);
+		psmt.setString(1, managerName);
+		psmt.setString(2, managerName);
+		ResultSet rss = psmt.executeQuery();
+		rss.next();
+		if (rss.getInt("count(*)") == 0)
+			throw new Exception("없는 부서장 이름 입니다");
+		List<Emp> result = new ArrayList<Emp>();
+		sql = "select concat(e.first_name, e.last_name) as name , d.department_name, (e.salary*(1 + ifnull(e.commission_pct,0))*12) salary, e.hire_date \r\n"
+				+ "from employees e join employees m on e.manager_id = m.employee_id join departments d on e.department_id = d.department_id \r\n"
+				+ "where e.manager_id in (select employee_id from employees c where last_name = ? "
+				+ " or first_name = ? ) ";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, managerName);
+		pstmt.setString(2, managerName);
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			double salary = rs.getDouble("salary");
+			String name = rs.getString("name");
+			Date hireDate = rs.getDate("hire_date");
+			String departmentName = rs.getString("department_name");
+
+			Emp emp = new Emp();
+			emp.setName(name);
+			emp.setSalary(salary);
+			emp.setHireDate(hireDate);
+			emp.setDepartmentName(departmentName);
+
+			result.add(emp);
+
+		}
+
+		return result;
+
+	}
 
 
 }

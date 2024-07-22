@@ -30,7 +30,7 @@ public class StaticsPrinter {
 					for (Emp emp : list) {
 						System.out
 								.println("---------------------------------------------------------------------------");
-						System.out.println("연봉: " + emp.getSalary() + ", 입사일: " + emp.getHireDate() + ", 부서장번호"
+						System.out.println("이름: " + emp.getName() + ", 연봉: " + emp.getSalary() + ", 입사일: " + emp.getHireDate() + ", 부서장번호"
 								+ emp.getManagerId() + ", 부서번호 " + emp.getDepartmentId());
 						System.out
 								.println("---------------------------------------------------------------------------");
